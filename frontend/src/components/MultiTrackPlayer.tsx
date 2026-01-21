@@ -31,9 +31,14 @@ export const MultiTrackPlayer = ({ tracks }: MultiTrackPlayerProps) => {
 
   return (
     <div className="multitrack-player">
+      {/* Mobile-First Player Controls */}
       <div className="player-controls">
-        <button onClick={togglePlay} className="btn-play-pause">
-          {isPlaying ? 'Pause' : 'Play'}
+        <button 
+          onClick={togglePlay} 
+          className="btn-play-pause"
+          aria-label={isPlaying ? 'Pause' : 'Play'}
+        >
+          {isPlaying ? '⏸️' : '▶️'} {isPlaying ? 'Pause' : 'Play'}
         </button>
         <div className="time-display">
           <span>{formatTime(currentTime)}</span>
@@ -42,6 +47,7 @@ export const MultiTrackPlayer = ({ tracks }: MultiTrackPlayerProps) => {
         </div>
       </div>
 
+      {/* Mobile-First Progress Bar */}
       <div className="progress-bar">
         <input
           type="range"
@@ -50,45 +56,64 @@ export const MultiTrackPlayer = ({ tracks }: MultiTrackPlayerProps) => {
           value={currentTime}
           onChange={handleSeek}
           step="0.1"
+          aria-label="Seek through track"
         />
       </div>
 
+      {/* Mobile-First Tracks Container */}
       <div className="tracks-container">
-        <h3>Tracks</h3>
-        {tracks.map(track => {
+        <h3>🎛️ Individual Track Controls</h3>
+        {tracks.map((track, index) => {
           const state = trackStates.get(track.id);
           if (!state) return null;
 
           return (
             <div key={track.id} className="track-control">
-              <div className="track-name">{track.name}</div>
+              <div className="track-name">
+                🎵 {track.name}
+              </div>
               <div className="track-controls">
-                <button
-                  onClick={() => toggleMute(track.id)}
-                  className={`btn-mute ${state.muted ? 'active' : ''}`}
-                >
-                  {state.muted ? 'Unmute' : 'Mute'}
-                </button>
-                <button
-                  onClick={() => toggleSolo(track.id)}
-                  className={`btn-solo ${state.solo ? 'active' : ''}`}
-                >
-                  Solo
-                </button>
+                {/* Mobile-First Volume Control */}
                 <div className="volume-control">
-                  <label>Volume: {state.volume}%</label>
+                  <label>🔊 Volume: {state.volume}%</label>
                   <input
                     type="range"
                     min="0"
                     max="100"
                     value={state.volume}
                     onChange={(e) => setVolume(track.id, parseInt(e.target.value))}
+                    aria-label={`Volume for ${track.name}`}
                   />
                 </div>
+                
+                {/* Mobile-First Mute Button */}
+                <button
+                  onClick={() => toggleMute(track.id)}
+                  className={`btn-mute ${state.muted ? 'active' : ''}`}
+                  aria-label={`${state.muted ? 'Unmute' : 'Mute'} ${track.name}`}
+                >
+                  {state.muted ? '🔇' : '🔊'} {state.muted ? 'Unmute' : 'Mute'}
+                </button>
+                
+                {/* Mobile-First Solo Button */}
+                <button
+                  onClick={() => toggleSolo(track.id)}
+                  className={`btn-solo ${state.solo ? 'active' : ''}`}
+                  aria-label={`${state.solo ? 'Stop soloing' : 'Solo'} ${track.name}`}
+                >
+                  🎯 {state.solo ? 'Soloing' : 'Solo'}
+                </button>
               </div>
             </div>
           );
         })}
+        
+        {/* Mobile-First Solo Status Indicator */}
+        {Array.from(trackStates.values()).some(s => s.solo) && (
+          <div className="solo-status" role="status" aria-live="polite">
+            🎯 Solo mode active - only selected tracks are audible
+          </div>
+        )}
       </div>
     </div>
   );

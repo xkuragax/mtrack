@@ -1,22 +1,35 @@
 # Multi-Track Audio Player with Admin Panel
 
-A full-stack application for listening to multi-track audio (stems) with an admin panel for content management.
+A full-stack application for listening to multi-track audio (stems) with an admin panel for content management. **Optimized for MOBILE DEVICES** 📱
 
 ## Features
 
-### User Interface (Frontend)
-- 📀 Browse albums with cover images
+### User Interface (Frontend) - MOBILE-FIRST DESIGN 📱
+- 📀 Browse albums with cover images (2-column grid on mobile)
 - 🎵 View songs in each album
-- 🎛️ Multi-track player with:
+- 🎛️ Multi-track player with mobile-optimized controls:
   - Synchronized playback of multiple audio tracks
   - Individual volume control for each track (0-100%)
-  - Mute button for each track
-  - Solo button (listen to only one track)
-  - Progress bar with seek functionality
-  - Play/Pause controls
+  - Large touch-friendly mute and solo buttons
+  - Progress bar with touch-friendly seek functionality
+  - Big play/pause controls designed for thumbs
   - Time display (current/total)
+  - Large touch targets (44px minimum)
 - 📄 Download/view song materials (lyrics, chords, tabs)
-- 📱 Responsive design (mobile & desktop)
+- 📱 **Mobile-first responsive design**
+- 🖱️ **Touch-optimized interface** - all elements sized for fingers
+- ⚡ **Fast loading** on mobile networks
+- 🎯 **Vertical orientation priority** for smartphone usage
+
+### Mobile Optimizations
+- ✅ **Mobile-first CSS** - starts with mobile, scales up
+- ✅ **Touch-friendly controls** - minimum 44px touch targets
+- ✅ **Optimized for thumbs** - large buttons and sliders
+- ✅ **No hover dependencies** - touch feedback instead
+- ✅ **Vertical layout priority** - optimized for portrait mode
+- ✅ **Reduced motion support** - accessibility compliant
+- ✅ **High DPI display support** - crisp graphics on Retina
+- ✅ **Pull-to-refresh prevention** - better mobile UX
 
 ### Admin Panel
 - 🔐 Secure authentication (JWT)
