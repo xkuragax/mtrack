@@ -2,7 +2,139 @@
 
 This guide covers deploying the Multi-Track Player to production.
 
-## Deployment Options
+## Quick Cloud Deployment (Recommended)
+
+This section provides step-by-step instructions for deploying to Vercel, Railway, and Neon with free tiers.
+
+### Step 1: Create Neon PostgreSQL Database
+
+1. Sign up at https://neon.tech (free tier)
+2. Create a new project
+3. Create a database named `mtrack`
+4. Copy the **DATABASE_URL** (format: `postgresql://user:password@xxx.neon.tech/mtrack`)
+
+### Step 2: Deploy Backend on Railway
+
+1. Sign up at https://railway.app (free tier)
+2. Click **New Project** → **Deploy from GitHub repo**
+3. Select your repository (xkuragax/mtrack)
+4. Configure:
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+5. Add Environment Variables:
+   ```
+   PORT=3001
+   DATABASE_URL=<your-neon-database-url>
+   JWT_SECRET=<generate-a-strong-32-char-secret>
+   NODE_ENV=production
+   CORS_ORIGIN=https://your-frontend.vercel.app,https://your-admin.vercel.app
+   UPLOAD_DIR=uploads
+   ```
+
+6. Deploy and wait for the build to complete
+
+7. Initialize the database:
+   - Go to Railway Console → Your Project → Terminal
+   - Run: `npm run init-db`
+
+8. Copy your Railway URL (e.g., `https://your-api.up.railway.app`)
+
+### Step 3: Deploy Frontend on Vercel
+
+1. Sign up at https://vercel.com (free tier)
+2. Click **Add New** → **Project**
+3. Import your GitHub repository
+4. Configure:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm ci`
+
+5. Add Environment Variable:
+   ```
+   VITE_API_URL=https://your-api.up.railway.app/api
+   ```
+
+6. Click **Deploy**
+
+7. Copy your Vercel URL (e.g., `https://your-frontend.vercel.app`)
+
+### Step 4: Deploy Admin Panel on Vercel
+
+1. Create another Vercel project for the admin panel
+2. Use the same GitHub repository
+3. Configure:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `admin`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm ci`
+
+4. Add Environment Variable:
+   ```
+   VITE_API_URL=https://your-api.up.railway.app/api
+   ```
+
+5. Click **Deploy**
+
+6. Copy your Admin Vercel URL (e.g., `https://your-admin.vercel.app`)
+
+### Step 5: Update Backend CORS
+
+1. Go back to Railway
+2. Update the `CORS_ORIGIN` environment variable with your actual Vercel URLs:
+   ```
+   CORS_ORIGIN=https://your-frontend.vercel.app,https://your-admin.vercel.app
+   ```
+3. Railway will automatically redeploy
+
+### Step 6: Final Testing
+
+1. **Test Frontend**: Open your frontend URL - should display albums
+2. **Test Admin**: Open your admin URL - should allow login (admin/admin123)
+3. **Create Content**: Use admin panel to add an album with songs
+4. **Verify**: Check frontend to see your new album
+
+### Automatic Deployments
+
+After initial setup, any changes you push to the `main` branch will automatically deploy:
+- Backend → Railway (redeploys)
+- Frontend → Vercel (redeploys)
+- Admin → Vercel (redeploys)
+
+### Deployment URLs
+
+After completion, you'll have:
+- 🌐 **Frontend**: `https://your-frontend.vercel.app`
+- 🔧 **Admin**: `https://your-admin.vercel.app`
+- 🔌 **API**: `https://your-api.up.railway.app`
+- 🗄️ **Database**: Neon PostgreSQL (managed)
+
+### Troubleshooting
+
+**CORS Errors**:
+- Make sure `CORS_ORIGIN` in Railway includes both Vercel URLs
+- Separate multiple URLs with commas, no spaces
+
+**Database Connection**:
+- Verify `DATABASE_URL` is correct in Railway
+- Check Neon dashboard to ensure database is active
+
+**Upload Issues**:
+- Railway ephemeral storage resets on redeploy
+- For production, consider using cloud storage (AWS S3, Cloudinary)
+
+**Build Failures**:
+- Check logs in Vercel/Railway dashboard
+- Ensure all dependencies are in package.json
+- Verify environment variables are set
+
+---
+
+## Traditional Deployment Options
 
 ### Option 1: Traditional VPS (DigitalOcean, AWS EC2, etc.)
 

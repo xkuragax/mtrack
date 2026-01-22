@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Album, Song, Track, Material, AuthResponse } from '../types';
 
-const API_BASE_URL = '/api';
+// Use environment variable for production, relative path for development
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const getAuthHeader = () => {
   const token = localStorage.getItem('adminToken');

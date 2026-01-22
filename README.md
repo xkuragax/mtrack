@@ -179,14 +179,34 @@ For production, consider using a cloud storage service like AWS S3 or Cloudinary
 
 ## Production Deployment
 
-### Backend
+### Quick Cloud Deployment (Recommended)
+
+For the fastest deployment to production, use the free tiers of Vercel, Railway, and Neon:
+
+📋 **Step-by-step deployment guide**: See [CLOUD_DEPLOYMENT_CHECKLIST.md](./CLOUD_DEPLOYMENT_CHECKLIST.md)
+
+**Deployment Overview**:
+1. **Database**: Create PostgreSQL database on [Neon](https://neon.tech)
+2. **Backend API**: Deploy to [Railway](https://railway.app)
+3. **Frontend**: Deploy to [Vercel](https://vercel.com)
+4. **Admin Panel**: Deploy to [Vercel](https://vercel.com)
+
+All services have generous free tiers perfect for small projects.
+
+### Traditional Deployment
+
+For more control, deploy to your own VPS:
+
+#### Backend
 1. Set `NODE_ENV=production` in .env
 2. Use a production PostgreSQL database
 3. Set a strong `JWT_SECRET`
 4. Configure CORS for your frontend domains
 5. Use a process manager like PM2
 
-### Frontend & Admin
+See full deployment guide in [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+#### Frontend & Admin
 1. Build the applications:
    ```bash
    npm run build
