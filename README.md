@@ -2,6 +2,21 @@
 
 A full-stack application for listening to multi-track audio (stems) with an admin panel for content management. **Optimized for MOBILE DEVICES** 📱
 
+---
+
+## 🚀 Cloud Deployment Ready!
+
+**[START_HERE.md](./START_HERE.md)** ← Click here for cloud deployment guide (5 minutes)
+
+Your project is fully configured for **100% free cloud deployment** using:
+- **Vercel** (Frontend + Admin Panel) - automatic deployment on push
+- **Railway** (Backend API) - automatic deployment on push
+- **Neon** (PostgreSQL Database) - free tier
+
+[Read more in QUICK_START_CLOUD.md](./QUICK_START_CLOUD.md)
+
+---
+
 ## Features
 
 ### User Interface (Frontend) - MOBILE-FIRST DESIGN 📱
@@ -179,14 +194,30 @@ For production, consider using a cloud storage service like AWS S3 or Cloudinary
 
 ## Production Deployment
 
-### Backend
+### Quick Cloud Deployment (Free & Automatic)
+
+🚀 **Recommended:** Deploy to Vercel + Railway + Neon (100% free!)
+
+Follow the quick start guide:
+- **[QUICK_START_CLOUD.md](./QUICK_START_CLOUD.md)** - 5-minute setup
+- **[CLOUD_DEPLOYMENT.md](./CLOUD_DEPLOYMENT.md)** - Detailed guide
+
+**You'll get:**
+- Frontend on Vercel (automatic deployment on push)
+- Admin panel on Vercel (automatic deployment on push)
+- Backend API on Railway (automatic deployment on push)
+- PostgreSQL on Neon (free tier)
+
+### Manual Deployment
+
+#### Backend
 1. Set `NODE_ENV=production` in .env
 2. Use a production PostgreSQL database
 3. Set a strong `JWT_SECRET`
 4. Configure CORS for your frontend domains
 5. Use a process manager like PM2
 
-### Frontend & Admin
+#### Frontend & Admin
 1. Build the applications:
    ```bash
    npm run build
