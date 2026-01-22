@@ -36,3 +36,10 @@ backend/uploads/materials/*
 *.tmp
 *.bak
 *.cache
+
+# Deployment configuration (contains sensitive data)
+.deployment-config
+DEPLOYMENT_URLS.md
+
+# Vercel
+.vercel
