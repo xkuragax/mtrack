@@ -207,9 +207,13 @@ This guide will walk you through deploying to:
 
 #### All Deployment Options
 
-- 📘 **[ONE_CLICK_DEPLOY.md](./ONE_CLICK_DEPLOY.md)** - Simple step-by-step guide (recommended!)
-- 📗 **[READY_TO_DEPLOY.md](./READY_TO_DEPLOY.md)** - Overview of all deployment methods
-- 📙 **[CLOUD_DEPLOYMENT_CHECKLIST.md](./CLOUD_DEPLOYMENT_CHECKLIST.md)** - Detailed checklist
+- 📘 **[ПОЛУЧИТЬ_ССЫЛКИ.md](./ПОЛУЧИТЬ_ССЫЛКИ.md)** - 🇷🇺 Пошаговая инструкция на русском (NEW!)
+- 📗 **[ONE_CLICK_DEPLOY.md](./ONE_CLICK_DEPLOY.md)** - Simple step-by-step guide (recommended!)
+- 📙 **[ЧТО_СДЕЛАНО.md](./ЧТО_СДЕЛАНО.md)** - 🇷🇺 Что было сделано (NEW!)
+- 📕 **[DEPLOYMENT_STATUS.md](./DEPLOYMENT_STATUS.md)** - Deployment readiness status (NEW!)
+- 📚 **[README_DEPLOYMENT.md](./README_DEPLOYMENT.md)** - Deployment summary (NEW!)
+- 📖 **[READY_TO_DEPLOY.md](./READY_TO_DEPLOY.md)** - Overview of all deployment methods
+- 📋 **[CLOUD_DEPLOYMENT_CHECKLIST.md](./CLOUD_DEPLOYMENT_CHECKLIST.md)** - Detailed checklist
 - 🤖 **[auto-deploy.sh](./auto-deploy.sh)** - Automated deployment script
 - 💬 **[deploy-interactive.sh](./deploy-interactive.sh)** - Interactive deployment script
 
