@@ -43,3 +43,13 @@ DEPLOYMENT_URLS.md
 
 # Vercel
 .vercel
+.vercel/
+
+# Railway
+.railway/
+railway.json.backup
+
+# Deployment configuration (contains sensitive data)
+.deployment-config
+DEPLOYMENT_URLS.md
+.env.deployment
